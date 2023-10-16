@@ -18,7 +18,7 @@ public class LoanService {
         this.loanRepository = loanRepository;
     }
 
-    public List<Loan> findAll(String stringFilter) {
+    public List<Loan> findAll() {
     	return loanRepository.findAll();
     }
 
@@ -31,10 +31,6 @@ public class LoanService {
     }
 
     public void saveLoan(Loan loan) {
-        if (loan == null) { 
-            System.err.println("Loan is null. Are you sure you have connected your form to the application?");
-            return;
-        }
         Double totalAmount = calculateTotalAmount(loan);
         loan.setTotalAmount(formatValue(totalAmount));
         Double installmentAmount = calculateInstallmentAmount(loan, totalAmount);

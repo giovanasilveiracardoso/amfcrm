@@ -1,7 +1,27 @@
-git clone https://github.com/giovanasilveiracardoso/amfcrm.git
+# Configuração do projeto #
 
-mvn clean
+## Pré-requisitos ##
 
-mvn package -Pproduction
+Java 17, Maven e Docker instalado.
 
-docker-compose up
+## Baixe o projeto com o comando abaixo: ##
+
+$ git clone https://github.com/giovanasilveiracardoso/amfcrm.git
+
+## Faça o build do projeto: ##
+
+$ mvn clean
+
+$ mvn update
+
+$ mvn package -Pproduction
+
+## Suba o projeto: ##
+
+$ docker-compose up
+
+## Para logar no projeto ##
+
+Username: user
+
+Senha: 123 

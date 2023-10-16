@@ -79,12 +79,4 @@ public class Loan extends AbstractEntity {
 		this.client = client;
 	}
 
-//    @Formula("(select count(c.id) from Contact c where c.company_id = id)")
-//    private int employeeCount;
-//
-//    public int getEmployeeCount(){
-//        return employeeCount;
-//    }
-    
-    
 }

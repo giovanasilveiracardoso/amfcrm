@@ -15,9 +15,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.renderer.NumberRenderer;
-import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.annotation.SpringComponent;
@@ -32,7 +30,6 @@ import jakarta.annotation.security.PermitAll;
 public class LoanView extends VerticalLayout {
 	private static final long serialVersionUID = 1L;
     Grid<Loan> grid = new Grid<>(Loan.class, false);
-    TextField filterText = new TextField();
     LoanForm form;
     LoanService loanService;
     ClientService clientService;
@@ -99,15 +96,10 @@ public class LoanView extends VerticalLayout {
     }
     
     private Component getToolbar() {
-        filterText.setPlaceholder("Filtro por nome ou CPF do cliente");
-        filterText.setClearButtonVisible(true);
-        filterText.setValueChangeMode(ValueChangeMode.LAZY);
-        filterText.addValueChangeListener(e -> updateList());
-
         Button addLoanButton = new Button("Incluir empréstimo");
         addLoanButton.addClickListener(click -> addLoan());
 
-        var toolbar = new HorizontalLayout(filterText, addLoanButton);
+        var toolbar = new HorizontalLayout(addLoanButton);
         toolbar.addClassName("toolbar");
         return toolbar;
     }
@@ -133,8 +125,7 @@ public class LoanView extends VerticalLayout {
         editLoan(new Loan());
     }
 
-
     private void updateList() {
-        grid.setItems(loanService.findAll(filterText.getValue()));
+        grid.setItems(loanService.findAll());
     }
 }

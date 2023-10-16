@@ -35,10 +35,6 @@ public class ClientService {
     }
 
     public void saveClient(Client client) {
-        if (client == null) { 
-            System.err.println("Client is null. Are you sure you have connected your form to the application?");
-            return;
-        }
         clientRepository.save(client);
     }
 }

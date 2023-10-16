@@ -10,10 +10,11 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @Route("login") 
-@PageTitle("Login | Vaadin CRM")
+@PageTitle("Login | AMF CRM")
 @AnonymousAllowed
 public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
+	private static final long serialVersionUID = 1L;
 	private final LoginForm login = new LoginForm(); 
 
 	public LoginView(){
@@ -24,12 +25,11 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 
 		login.setAction("login"); 
 
-		add(new H1("Vaadin CRM"), login);
+		add(new H1("AMF CRM"), login);
 	}
 
 	@Override
 	public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
-		// inform the user about an authentication error
 		if(beforeEnterEvent.getLocation()  
         .getQueryParameters()
         .getParameters()
