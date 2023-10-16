@@ -1,7 +1,7 @@
-#FROM eclipse-temurin:17-jre
-#COPY target/*.jar app.jar
-#EXPOSE 8080
-#ENTRYPOINT ["java", "-jar", "/app.jar"]
+FROM eclipse-temurin:17-jre
+COPY target/*.jar amfcrm-1.0-SNAPSHOT.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/amfcrm-1.0-SNAPSHOT.jar"]
 ####
 #FROM maven:3.8.5-openjdk-17
 
@@ -11,13 +11,13 @@
 
 #CMD mvn spring-boot:run
 
-FROM maven:3.8.5-openjdk-17 as builder
-COPY . /usr/src/mymaven
-WORKDIR /usr/src/mymaven
-RUN mvn clean install -f /usr/src/mymaven
+#FROM maven:3.8.5-openjdk-17 as builder
+#COPY . /usr/src/mymaven
+#WORKDIR /usr/src/mymaven
+#RUN mvn clean install -f /usr/src/mymaven
 
-FROM java:17
+#FROM java:17
 
-COPY --from=builder /usr/src/mymaven/target/amfcrm.jar app.jar
+#COPY --from=builder /usr/src/mymaven/target/amfcrm.jar app.jar
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+#ENTRYPOINT ["java","-jar","/app.jar"]

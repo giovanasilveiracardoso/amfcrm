@@ -1,0 +1,33 @@
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    org.atmosphere: warn
+
+spring:
+  mustache:
+    check-template-location: false
+  datasource:
+    url: jdbc:mysql://mysql-db:3306/amfcrm?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 30000
+      pool-name: amfcrm    
+  jpa:
+    hibernate:
+      ddl-auto: update # Pode ser "update", "create", "create-drop", ou "none"
+    show-sql: true # Exibe consultas SQL no console para fins de depuração
+    defer-datasource-initialization: true
+    
+vaadin:
+  launch-browser: true
+  whitelisted-packages: com.vaadin, org.vaadin, dev.hilla, com.example.application
+
+
+
+
