@@ -12,8 +12,6 @@ $ git clone https://github.com/giovanasilveiracardoso/amfcrm.git
 
 $ mvn clean
 
-$ mvn update
-
 $ mvn package -Pproduction
 
 ## Suba o projeto: ##
